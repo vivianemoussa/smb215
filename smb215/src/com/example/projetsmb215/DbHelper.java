@@ -1,4 +1,4 @@
-package com.example.smb215;
+package com.example.projetsmb215;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
