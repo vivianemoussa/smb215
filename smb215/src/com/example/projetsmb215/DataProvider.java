@@ -1,10 +1,13 @@
 package com.example.projetsmb215;
 
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
@@ -32,6 +35,13 @@ public class DataProvider extends ContentProvider {
     private static final int PROFILE_ALLROWS = 3;
     private static final int PROFILE_SINGLE_ROW = 4;
     private static final UriMatcher uriMatcher;
+    static {
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "messages", MESSAGES_ALLROWS);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "messages/#", MESSAGES_SINGLE_ROW);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "profile", PROFILE_ALLROWS);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "profile/#", PROFILE_SINGLE_ROW);
+    }
  
     @Override
     public boolean onCreate() {
@@ -41,39 +51,7 @@ public class DataProvider extends ContentProvider {
  
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return null;
-    }
- 
-    @Override
-    public String getType(Uri uri) {
-        return null;
-    }
- 
-    @Override
-    public Uri insert(Uri uri, ContentValues values) {
-        return null;
-    }
- 
-    @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return 0;
-    }
- 
-    @Override
-    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        return 0;
-    }
-   
-    static {
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI("com.example.projetsmb215.provider", "messages", MESSAGES_ALLROWS);
-        uriMatcher.addURI("com.example.projetsmb215.provider", "messages/#", MESSAGES_SINGLE_ROW);
-        uriMatcher.addURI("com.example.projetsmb215.provider", "profile", PROFILE_ALLROWS);
-        uriMatcher.addURI("com.example.projetsmb215.provider", "profile/#", PROFILE_SINGLE_ROW);
-    }
-    
-    public Cursor query1(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        android.database.sqlite.SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
          
         switch(uriMatcher.match(uri)) {
@@ -89,7 +67,7 @@ public class DataProvider extends ContentProvider {
             break;
              
         default:
-            throw new IllegalArgumentException("Unsupported URI: " + uri);         
+            throw new IllegalArgumentException("Unsupported URI: " + uri);          
         }
          
         Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder);
@@ -97,8 +75,9 @@ public class DataProvider extends ContentProvider {
         return c;
     }
      
-    public Uri insert1 (Uri uri, ContentValues values) {
-        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+    @Override
+    public Uri insert(Uri uri, ContentValues values) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
          
         long id;
         switch(uriMatcher.match(uri)) {
@@ -123,8 +102,9 @@ public class DataProvider extends ContentProvider {
         return insertUri;
     }
      
-    public int update1(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+    @Override
+    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
          
         int count;
         switch(uriMatcher.match(uri)) {
@@ -139,15 +119,16 @@ public class DataProvider extends ContentProvider {
             break;
              
         default:
-            throw new IllegalArgumentException("Unsupported URI: " + uri);         
+            throw new IllegalArgumentException("Unsupported URI: " + uri);          
         }
          
         getContext().getContentResolver().notifyChange(uri, null);
         return count;
     }
      
-    public int delete1(Uri uri, String selection, String[] selectionArgs) {
-        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+    @Override
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
          
         int count;
         switch(uriMatcher.match(uri)) {
@@ -162,14 +143,16 @@ public class DataProvider extends ContentProvider {
             break;
              
         default:
-            throw new IllegalArgumentException("Unsupported URI: " + uri);         
+            throw new IllegalArgumentException("Unsupported URI: " + uri);          
         }
          
         getContext().getContentResolver().notifyChange(uri, null);
         return count;
     }
      
-    private String getTableName(Uri uri) {
+
+
+	private String getTableName(Uri uri) {
         switch(uriMatcher.match(uri)) {
         case MESSAGES_ALLROWS:
         case MESSAGES_SINGLE_ROW:
@@ -177,11 +160,14 @@ public class DataProvider extends ContentProvider {
              
         case PROFILE_ALLROWS:
         case PROFILE_SINGLE_ROW:
-            return TABLE_PROFILE;          
+            return TABLE_PROFILE;           
         }
         return null;
     }
-        
-    
-       
+
+	@Override
+	public String getType(Uri uri) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
