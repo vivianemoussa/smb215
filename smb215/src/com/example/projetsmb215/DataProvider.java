@@ -24,8 +24,8 @@ public class DataProvider extends ContentProvider {
     public static final String COL_COUNT = "count";                
                      
     private DbHelper dbHelper;
-    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.example.smb215.provider/messages");
-    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.example.smb215.provider/profile");
+    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.example.projetsmb215.provider/messages");
+    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.example.projetsmb215.provider/profile");
      
     private static final int MESSAGES_ALLROWS = 1;
     private static final int MESSAGES_SINGLE_ROW = 2;
@@ -66,10 +66,10 @@ public class DataProvider extends ContentProvider {
    
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI("com.example.smb215.provider", "messages", MESSAGES_ALLROWS);
-        uriMatcher.addURI("com.example.smb215.provider", "messages/#", MESSAGES_SINGLE_ROW);
-        uriMatcher.addURI("com.example.smb215.provider", "profile", PROFILE_ALLROWS);
-        uriMatcher.addURI("com.example.smb215.provider", "profile/#", PROFILE_SINGLE_ROW);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "messages", MESSAGES_ALLROWS);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "messages/#", MESSAGES_SINGLE_ROW);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "profile", PROFILE_ALLROWS);
+        uriMatcher.addURI("com.example.projetsmb215.provider", "profile/#", PROFILE_SINGLE_ROW);
     }
     
     public Cursor query1(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {

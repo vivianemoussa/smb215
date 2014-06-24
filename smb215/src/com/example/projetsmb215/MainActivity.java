@@ -1,6 +1,6 @@
 package com.example.projetsmb215;
 
-import com.example.smb215.R;
+import com.example.projetsmb215.R;
 
 import android.os.Bundle;
 import android.app.Activity;
