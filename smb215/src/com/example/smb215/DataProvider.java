@@ -97,4 +97,30 @@ public class DataProvider extends ContentProvider {
         return c;
     }
      
+    public Uri insert1 (Uri uri, ContentValues values) {
+        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+         
+        long id;
+        switch(uriMatcher.match(uri)) {
+        case MESSAGES_ALLROWS:
+            id = db.insertOrThrow(TABLE_MESSAGES, null, values);
+            if (values.get(COL_TO) == null) {
+                db.execSQL("update profile set count=count+1 where email = ?", new Object[]{values.get(COL_FROM)});
+                getContext().getContentResolver().notifyChange(CONTENT_URI_PROFILE, null);
+            }
+            break;
+             
+        case PROFILE_ALLROWS:
+            id = db.insertOrThrow(TABLE_PROFILE, null, values);
+            break;
+             
+        default:
+            throw new IllegalArgumentException("Unsupported URI: " + uri);
+        }
+         
+        Uri insertUri = ContentUris.withAppendedId(uri, id);
+        getContext().getContentResolver().notifyChange(insertUri, null);
+        return insertUri;
+    }
+     
    
