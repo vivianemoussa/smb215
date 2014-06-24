@@ -1,25 +1,42 @@
 package com.example.smb215;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.smb215.R;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.util.Patterns;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Application {
 
+	public static String[] email_arr;
+    private static SharedPreferences prefs;
+ 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onCreate() {
+        super.onCreate();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+         
+        List<String> emailList = getEmailList();
+        email_arr = emailList.toArray(new String[emailList.size()]);
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
+     
+    private List<String> getEmailList() {
+        List<String> lst = new ArrayList<String>();
+        Account[] accounts = AccountManager.get(this).getAccounts();
+        for (Account account : accounts) {
+            if (Patterns.EMAIL_ADDRESS.matcher(account.name).matches()) {
+                lst.add(account.name);
+            }
+        }
+        return lst;
+    }  
 }
