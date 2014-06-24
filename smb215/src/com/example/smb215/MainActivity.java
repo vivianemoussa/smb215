@@ -3,17 +3,12 @@ package com.example.smb215;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.smb215.R;
-
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.util.Patterns;
-import android.view.Menu;
 
 public class MainActivity extends Application {
 

@@ -24,8 +24,8 @@ public class DataProvider extends ContentProvider {
     public static final String COL_COUNT = "count";                
                      
     private DbHelper dbHelper;
-    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.appsrox.instachat.provider/messages");
-    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.appsrox.instachat.provider/profile");
+    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.example.smb215.provider/messages");
+    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.example.smb215.provider/profile");
      
     private static final int MESSAGES_ALLROWS = 1;
     private static final int MESSAGES_SINGLE_ROW = 2;
@@ -123,4 +123,65 @@ public class DataProvider extends ContentProvider {
         return insertUri;
     }
      
-   
+    public int update1(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+         
+        int count;
+        switch(uriMatcher.match(uri)) {
+        case MESSAGES_ALLROWS:
+        case PROFILE_ALLROWS:
+            count = db.update(getTableName(uri), values, selection, selectionArgs);
+            break;
+             
+        case MESSAGES_SINGLE_ROW:
+        case PROFILE_SINGLE_ROW:
+            count = db.update(getTableName(uri), values, "_id = ?", new String[]{uri.getLastPathSegment()});
+            break;
+             
+        default:
+            throw new IllegalArgumentException("Unsupported URI: " + uri);         
+        }
+         
+        getContext().getContentResolver().notifyChange(uri, null);
+        return count;
+    }
+     
+    public int delete1(Uri uri, String selection, String[] selectionArgs) {
+        android.database.sqlite.SQLiteDatabase db = dbHelper.getWritableDatabase();
+         
+        int count;
+        switch(uriMatcher.match(uri)) {
+        case MESSAGES_ALLROWS:
+        case PROFILE_ALLROWS:
+            count = db.delete(getTableName(uri), selection, selectionArgs);
+            break;
+             
+        case MESSAGES_SINGLE_ROW:
+        case PROFILE_SINGLE_ROW:
+            count = db.delete(getTableName(uri), "_id = ?", new String[]{uri.getLastPathSegment()});
+            break;
+             
+        default:
+            throw new IllegalArgumentException("Unsupported URI: " + uri);         
+        }
+         
+        getContext().getContentResolver().notifyChange(uri, null);
+        return count;
+    }
+     
+    private String getTableName(Uri uri) {
+        switch(uriMatcher.match(uri)) {
+        case MESSAGES_ALLROWS:
+        case MESSAGES_SINGLE_ROW:
+            return TABLE_MESSAGES;
+             
+        case PROFILE_ALLROWS:
+        case PROFILE_SINGLE_ROW:
+            return TABLE_PROFILE;          
+        }
+        return null;
+    }
+        
+    
+       
+}
