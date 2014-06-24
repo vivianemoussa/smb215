@@ -42,6 +42,11 @@
             <category android:name="com.appsrox.instachat" />
         </intent-filter>
     </receiver>
+    <provider
+    	android:name=".DataProvider"
+    	android:authorities="com.example.smb215.provider"
+    	android:exported="false" >
+	</provider>
 </application>
 
 
