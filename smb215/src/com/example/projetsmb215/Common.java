@@ -10,9 +10,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Patterns;
 
-public class Common extends Application {   
+public class Common extends Application {
+	//public static final String PROJECT_NUMBER = "1086298744334";
 	 
-    public static String[] email_arr;
+    public static final String PROFILE_ID = null;
+	public static String[] email_arr;
     private static SharedPreferences prefs;
  
     @Override
@@ -33,5 +35,20 @@ public class Common extends Application {
             }
         }
         return lst;
-    }   
+    }
+
+	public static String getRingtone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static boolean isNotify() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static Object getPreferredEmail() {
+		// TODO Auto-generated method stub
+		return null;
+	}   
 }
