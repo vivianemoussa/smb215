@@ -1,19 +1,30 @@
 package com.example.projetsmb215;
 import com.example.projetsmb215.R;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
+import android.app.ListFragment;
+import android.content.CursorLoader;
+import android.app.LoaderManager;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import static com.example.projetsmb215.DataProvider.CONTENT_URI_PROFILE;
+import static com.example.projetsmb215.DataProvider.COL_ID;
+import static com.example.projetsmb215.DataProvider.COL_NAME;
+import static com.example.projetsmb215.DataProvider.COL_COUNT;
 
+
+@SuppressLint("NewApi")
 public class MessagesFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	 
     private OnFragmentInteractionListener mListener;
     private SimpleCursorAdapter adapter;
      
-    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
@@ -59,23 +70,6 @@ public class MessagesFragment extends ListFragment implements LoaderManager.Load
 		
 	}
 
-	private Context getActivity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-         
-        Bundle args = new Bundle();
-        args.putString(DataProvider.COL_EMAIL, mListener.getProfileEmail());
-        getLoaderManager().initLoader(0, args, this);
-    }
- 
-    private Object getLoaderManager() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void onDetach() {
         super.onDetach();
@@ -85,6 +79,21 @@ public class MessagesFragment extends ListFragment implements LoaderManager.Load
     public interface OnFragmentInteractionListener {
         public String getProfileEmail();
     }
+
+
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+         return new CursorLoader(getActivity(), 
+            		CONTENT_URI_PROFILE,new String[]{COL_ID, COL_NAME, COL_COUNT},null,null,COL_ID + " DESC"); 
+           
+        }
+    	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+            adapter.swapCursor(data);
+        }
+    	public void onLoaderReset(Loader<Cursor> loader) {
+            adapter.swapCursor(null);
+        }
+    }
+               
     
-}
+
                 
