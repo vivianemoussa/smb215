@@ -24,7 +24,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
  
     @Override
     public void onReceive(Context context, Intent intent) {
-        ctx = context;
+       /* ctx = context;
          
         PowerManager mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         WakeLock mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
@@ -49,7 +49,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
                 values.put(DataProvider.COL_FROM, email);
                 context.getContentResolver().insert(DataProvider.CONTENT_URI_MESSAGES, values);
                  
-                if (Common.isNotify()) {
+                if (CommonUtilities.isNotify()) {
                     sendNotification("New message", true);
                 }
             }
@@ -68,8 +68,8 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
 	        .setContentTitle(ctx.getString(R.string.app_name))
 	        .setContentText(text);
 	 
-	    if (!TextUtils.isEmpty(Common.getRingtone())) {
-	        mBuilder.setSound(Uri.parse(Common.getRingtone()));
+	    if (!TextUtils.isEmpty(CommonUtilities.getRingtone())) {
+	        mBuilder.setSound(Uri.parse(CommonUtilities.getRingtone()));
 	    }
 	     
 	    if (launchApp) {
@@ -81,6 +81,6 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
 	     
 	    mNotificationManager.notify(1, mBuilder.getNotification());
 	}
-	         
+	       */  
 
-}
+}}

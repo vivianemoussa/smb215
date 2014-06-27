@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import  com.example.projetsmb215.GcmUtil;
+import  com.example.projetsmb215.DemoActivity;
 
 
 @SuppressLint("NewApi")
@@ -24,14 +24,14 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
     private EditText msgEdit;
     private Button sendBtn;
     private String profileId, profileName, profileEmail;
-    private GcmUtil gcmUtil;
+    private DemoActivity gcmUtil;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity);
+     //   setContentView(R.layout.activity);
          
-        profileId = getIntent().getStringExtra(Common.PROFILE_ID);
+      //  profileId = getIntent().getStringExtra(CommonUtilities.PROFILE_ID);
         msgEdit = (EditText) findViewById(R.id.msg_edit);
         sendBtn = (Button) findViewById(R.id.send_btn);
          
@@ -47,7 +47,7 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
         	        @Override
         	        protected String doInBackground(Void... params) {
         	            String msg = "";
-        	            ServerUtilities.send(txt, profileEmail);
+        	          //  ServerUtilities.send(txt, profileEmail);
 						 
 						ContentValues values = new ContentValues(2);
 						values.put(DataProvider.COL_MSG, txt);
@@ -79,8 +79,8 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
         actionBar.setSubtitle("connecting ...");
          
         BroadcastReceiver registrationStatusReceiver = null;
-		registerReceiver(registrationStatusReceiver, new IntentFilter(Common.ACTION_REGISTER));
-        gcmUtil = new GcmUtil(getApplicationContext());
+	//	registerReceiver(registrationStatusReceiver, new IntentFilter(CommonUtilities.ACTION_REGISTER));
+      //  gcmUtil = new DemoActivity(getApplicationContext());
     }   
      
     @Override
@@ -101,7 +101,7 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
     protected void onDestroy() {
         BroadcastReceiver registrationStatusReceiver = null;
 		unregisterReceiver(registrationStatusReceiver);
-        gcmUtil.cleanup();
+       // gcmUtil.cleanup();
         super.onDestroy();
     }
 }

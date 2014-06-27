@@ -38,7 +38,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * as a master/detail two-pane view on tablets. When true, a single pane is
 	 * shown on tablets.
 	 */
-	private static final boolean ALWAYS_SIMPLE_PREFS = false;
+/*	private static final boolean ALWAYS_SIMPLE_PREFS = false;
 	public static Preference fakeHeader;
 
 	@Override
@@ -53,7 +53,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * device configuration dictates that a simplified, single-pane UI should be
 	 * shown.
 	 */
-	private void setupSimplePreferencesScreen() {
+/*	private void setupSimplePreferencesScreen() {
 		if (!isSimplePreferences(this)) {
 			return;
 		}
@@ -87,7 +87,7 @@ public class SettingsActivity extends PreferenceActivity {
 	}
 
 	/** {@inheritDoc} */
-	@Override
+	/*@Override
 	public boolean onIsMultiPane() {
 		return isXLargeTablet(this) && !isSimplePreferences(this);
 	}
@@ -107,26 +107,26 @@ public class SettingsActivity extends PreferenceActivity {
 	 * doesn't have an extra-large screen. In these cases, a single-pane
 	 * "simplified" settings UI should be shown.
 	 */
-	private static boolean isSimplePreferences(Context context) {
+/*	private static boolean isSimplePreferences(Context context) {
 		return ALWAYS_SIMPLE_PREFS
 				|| Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
 				|| !isXLargeTablet(context);
 	}
 
 	/** {@inheritDoc} */
-	@Override
+	/*@Override
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void onBuildHeaders(List<Header> target) {
 		if (!isSimplePreferences(this)) {
 			loadHeadersFromResource(R.xml.pref_headers, target);
 		}
 	}
-
+*/
 	/**
 	 * A preference value change listener that updates the preference's summary
 	 * to reflect its new value.
 	 */
-	private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+	/*private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object value) {
 			String stringValue = value.toString();
@@ -172,7 +172,7 @@ public class SettingsActivity extends PreferenceActivity {
 			}
 			return true;
 		}
-	};
+	};*/
 
 	/**
 	 * Binds a preference's summary to its value. More specifically, when the
@@ -183,7 +183,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * 
 	 * @see #sBindPreferenceSummaryToValueListener
 	 */
-	private static void bindPreferenceSummaryToValue(Preference preference) {
+	/*private static void bindPreferenceSummaryToValue(Preference preference) {
 		// Set the listener to watch for value changes.
 		preference
 				.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
@@ -195,13 +195,13 @@ public class SettingsActivity extends PreferenceActivity {
 				PreferenceManager.getDefaultSharedPreferences(
 						preference.getContext()).getString(preference.getKey(),
 						""));
-	}
+	}*/
 
 	/**
 	 * This fragment shows general preferences only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	/*@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class GeneralPreferenceFragment extends PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -215,13 +215,13 @@ public class SettingsActivity extends PreferenceActivity {
 			bindPreferenceSummaryToValue(findPreference("example_text"));
 			bindPreferenceSummaryToValue(findPreference("example_list"));
 		}
-	}
+	}*/
 
 	/**
 	 * This fragment shows notification preferences only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	/*@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class NotificationPreferenceFragment extends
 			PreferenceFragment {
 		@Override
@@ -235,13 +235,13 @@ public class SettingsActivity extends PreferenceActivity {
 			// guidelines.
 			bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 		}
-	}
+	}*/
 
 	/**
 	 * This fragment shows data and sync preferences only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	/*@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class DataSyncPreferenceFragment extends PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -256,11 +256,11 @@ public class SettingsActivity extends PreferenceActivity {
 			
 		}
 		
-	}
+	}*/
 	/**
 	 * This fragment shows messaging preferences only.
 	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	/*@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class MessagingPreferenceFragment extends PreferenceFragment {
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -275,16 +275,16 @@ public class SettingsActivity extends PreferenceActivity {
 	                        
 	        
 	        ListPreference exampleList = (ListPreference) findPreference("chat_email_id");
-	        exampleList.setEntries(Common.email_arr);
-	        exampleList.setEntryValues(Common.email_arr);
-	        exampleList.setValue(Common.getPreferredEmail());
+	        exampleList.setEntries(CommonUtilities.email_arr);
+	        exampleList.setEntryValues(CommonUtilities.email_arr);
+	        exampleList.setValue(CommonUtilities.getPreferredEmail());
 	         
 	        EditTextPreference exampleText = (EditTextPreference) findPreference("display_name");
-	        exampleText.setText(Common.getDisplayName()); 
+	        exampleText.setText(CommonUtilities.getDisplayName()); 
 	    }
 	    
 	}
-	
+	*/
 	      
 	
 }

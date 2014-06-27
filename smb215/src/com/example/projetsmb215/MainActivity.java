@@ -34,8 +34,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-/*public class MainActivity extends Activity {
-	TextView mDisplay;
+public class MainActivity extends Activity {
+	/*TextView mDisplay;
     AsyncTask<Void, Void, Void> mRegisterTask;
 
     @Override
@@ -83,7 +83,7 @@ import android.view.Menu;
         }
     }
 
-    @Override
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
@@ -132,7 +132,7 @@ import android.view.Menu;
     };
 
 }}*/
-@SuppressLint("NewApi")
+/*@SuppressLint("NewApi")
 public abstract class MainActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     
     private SimpleCursorAdapter adapter;
@@ -172,7 +172,7 @@ public abstract class MainActivity extends ListActivity implements LoaderManager
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(this, ChatActivity.class);
-        intent.putExtra(Common.PROFILE_ID, String.valueOf(id));
+        intent.putExtra(CommonUtilities.PROFILE_ID, String.valueOf(id));
         startActivity(intent);
     }
 
@@ -208,13 +208,13 @@ public abstract class MainActivity extends ListActivity implements LoaderManager
     	 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent != null && Common.ACTION_REGISTER.equals(intent.getAction())) {
-                switch (intent.getIntExtra(Common.EXTRA_STATUS, 100)) {
-                case Common.STATUS_SUCCESS:
+            if (intent != null && CommonUtilities.ACTION_REGISTER.equals(intent.getAction())) {
+                switch (intent.getIntExtra(CommonUtilities.EXTRA_STATUS, 100)) {
+                case CommonUtilities.STATUS_SUCCESS:
                     getActionBar().setSubtitle("online");
                     break;
                      
-                case Common.STATUS_FAILED:
+                case CommonUtilities.STATUS_FAILED:
                     getActionBar().setSubtitle("offline");                  
                     break;                  
                 }
@@ -222,7 +222,7 @@ public abstract class MainActivity extends ListActivity implements LoaderManager
         }
     };
 
-
+*/
                     
 }
                 

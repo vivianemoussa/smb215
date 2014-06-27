@@ -11,8 +11,8 @@
     <header
         android:fragment="com.example.projetsmb215.SettingsActivity$DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
-    <header
+   <!--   <header
     android:fragment="com.example.projetsmb215.SettingsActivity$MessagingPreferenceFragment"
-    android:title="@string/pref_header_messaging" />
+    android:title="@string/pref_header_messaging" />-->
 
 </preference-headers>
