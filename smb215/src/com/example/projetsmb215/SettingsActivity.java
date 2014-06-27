@@ -268,7 +268,7 @@ public class SettingsActivity extends PreferenceActivity {
 	        addPreferencesFromResource(R.xml.pref_messaging);
 	        
 	     // Add 'messaging' preferences, and a corresponding header.
-	        fakeHeader = new PreferenceCategory(this);
+	      //  fakeHeader = new PreferenceCategory(this);
 	        fakeHeader.setTitle(R.string.pref_header_messaging);
 	        getPreferenceScreen().addPreference(fakeHeader);
 	        addPreferencesFromResource(R.xml.pref_messaging);

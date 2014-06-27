@@ -18,6 +18,7 @@ public class GcmUtil extends Activity {
 	 private static final int MAX_ATTEMPTS = 5;
 	    private static final int BACKOFF_MILLI_SECONDS = 2000;
 	    private static final Random random = new Random();
+	    GoogleCloudMessaging gcm;
 	    
 		AsyncTask<Void, Void, Boolean> mRegisterTak;
 		
@@ -37,7 +38,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	            Log.d(TAG, "Attempt #" + i + " to register");
 	            try {
 	                if (gcm == null) {
-	                	GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(ctx);
+	                	gcm = GoogleCloudMessaging.getInstance(ctx);
 	                }
 	                String regid = gcm.register(Common.getSenderId());
 	 

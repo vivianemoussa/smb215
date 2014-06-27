@@ -1,6 +1,4 @@
 package com.example.projetsmb215;
-import java.io.IOException;
-
 import com.example.projetsmb215.R;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -18,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import  com.example.projetsmb215.GcmUtil;
+
 
 @SuppressLint("NewApi")
 public class ChatActivity extends Activity implements MessagesFragment.OnFragmentInteractionListener {
@@ -48,17 +47,12 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
         	        @Override
         	        protected String doInBackground(Void... params) {
         	            String msg = "";
-        	            try {
-        	                ServerUtilities.send(txt, profileEmail);
-        	                 
-        	                ContentValues values = new ContentValues(2);
-        	                values.put(DataProvider.COL_MSG, txt);
-        	                values.put(DataProvider.COL_TO, profileEmail);
-        	                getContentResolver().insert(DataProvider.CONTENT_URI_MESSAGES, values);
-        	                 
-        	            } catch (IOException ex) {
-        	                msg = "Message could not be sent";
-        	            }
+        	            ServerUtilities.send(txt, profileEmail);
+						 
+						ContentValues values = new ContentValues(2);
+						values.put(DataProvider.COL_MSG, txt);
+						values.put(DataProvider.COL_TO, profileEmail);
+						getContentResolver().insert(DataProvider.CONTENT_URI_MESSAGES, values);
         	            return msg;
         	        }
         	 
