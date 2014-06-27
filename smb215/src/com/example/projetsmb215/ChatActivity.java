@@ -2,9 +2,12 @@ package com.example.projetsmb215;
 import java.io.IOException;
 
 import com.example.projetsmb215.R;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -14,7 +17,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import  com.example.projetsmb215.GcmUtil;
 
+@SuppressLint("NewApi")
 public class ChatActivity extends Activity implements MessagesFragment.OnFragmentInteractionListener {
 	 
     private EditText msgEdit;
@@ -25,7 +30,7 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity);
          
         profileId = getIntent().getStringExtra(Common.PROFILE_ID);
         msgEdit = (EditText) findViewById(R.id.msg_edit);
@@ -79,7 +84,8 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
         }
         actionBar.setSubtitle("connecting ...");
          
-        registerReceiver(registrationStatusReceiver, new IntentFilter(Common.ACTION_REGISTER));
+        BroadcastReceiver registrationStatusReceiver = null;
+		registerReceiver(registrationStatusReceiver, new IntentFilter(Common.ACTION_REGISTER));
         gcmUtil = new GcmUtil(getApplicationContext());
     }   
      
@@ -99,7 +105,8 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
  
     @Override
     protected void onDestroy() {
-        unregisterReceiver(registrationStatusReceiver);
+        BroadcastReceiver registrationStatusReceiver = null;
+		unregisterReceiver(registrationStatusReceiver);
         gcmUtil.cleanup();
         super.onDestroy();
     }

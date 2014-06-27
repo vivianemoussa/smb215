@@ -2,6 +2,7 @@ package com.example.projetsmb215;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,10 +16,11 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.text.TextUtils;
 
+@SuppressLint("NewApi")
 public class GcmBroadcastReceiver extends BroadcastReceiver {
     
     private static final String TAG = "GcmBroadcastReceiver";
-    private Context ctx;    
+    public static  Context ctx;    
  
     @Override
     public void onReceive(Context context, Intent intent) {

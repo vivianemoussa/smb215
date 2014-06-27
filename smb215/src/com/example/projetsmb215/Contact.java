@@ -5,11 +5,10 @@ import java.util.List;
 import android.app.DownloadManager.Query;
 
 
-@Entity
+
 public class Contact {
  
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     private Long id;
     private String email;
     private String regId;

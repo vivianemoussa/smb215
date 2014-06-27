@@ -8,6 +8,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -38,6 +39,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * shown on tablets.
 	 */
 	private static final boolean ALWAYS_SIMPLE_PREFS = false;
+	public static Preference fakeHeader;
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class SettingsActivity extends PreferenceActivity {
 		if (!isSimplePreferences(this)) {
 			return;
 		}
+		
 
 		// In the simplified UI, fragments are not used at all and we instead
 		// use the older PreferenceActivity APIs.
@@ -250,7 +253,9 @@ public class SettingsActivity extends PreferenceActivity {
 			// updated to reflect the new value, per the Android Design
 			// guidelines.
 			bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+			
 		}
+		
 	}
 	/**
 	 * This fragment shows messaging preferences only.
@@ -261,8 +266,25 @@ public class SettingsActivity extends PreferenceActivity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        addPreferencesFromResource(R.xml.pref_messaging);
+	        
+	     // Add 'messaging' preferences, and a corresponding header.
+	        fakeHeader = new PreferenceCategory(this);
+	        fakeHeader.setTitle(R.string.pref_header_messaging);
+	        getPreferenceScreen().addPreference(fakeHeader);
+	        addPreferencesFromResource(R.xml.pref_messaging);
+	                        
+	        
+	        ListPreference exampleList = (ListPreference) findPreference("chat_email_id");
+	        exampleList.setEntries(Common.email_arr);
+	        exampleList.setEntryValues(Common.email_arr);
+	        exampleList.setValue(Common.getPreferredEmail());
+	         
+	        EditTextPreference exampleText = (EditTextPreference) findPreference("display_name");
+	        exampleText.setText(Common.getDisplayName()); 
 	    }
+	    
 	}
+	
 	      
 	
 }

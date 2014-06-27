@@ -79,6 +79,8 @@ public class MessagesFragment extends ListFragment implements LoaderManager.Load
     public interface OnFragmentInteractionListener {
         public String getProfileEmail();
     }
+    
+    
 
 
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {

@@ -10,10 +10,15 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Patterns;
 
+
 public class Common extends Application {
 	//public static final String PROJECT_NUMBER = "1086298744334";
-	 
+	
     public static final String PROFILE_ID = null;
+	public static final String ACTION_REGISTER = null;
+	static final String EXTRA_STATUS = "message";
+	protected static final int STATUS_SUCCESS = 1;
+	protected static final int STATUS_FAILED = 2;
 	public static String[] email_arr;
     private static SharedPreferences prefs;
  
@@ -37,18 +42,30 @@ public class Common extends Application {
         return lst;
     }
 
-	public static String getRingtone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+ 
+	public static String getPreferredEmail() {
+	    return prefs.getString("chat_email_id", email_arr.length==0 ? "" : email_arr[0]);
+	}
+	 
+	public static String getDisplayName() {
+	    String email = getPreferredEmail();
+	    return prefs.getString("display_name", email.substring(0, email.indexOf('@')));
+	}
+	 
 	public static boolean isNotify() {
-		// TODO Auto-generated method stub
-		return false;
+	    return prefs.getBoolean("notifications_new_message", true);
 	}
-
-	public static Object getPreferredEmail() {
-		// TODO Auto-generated method stub
-		return null;
+	 
+	public static String getRingtone() {
+	    return prefs.getString("notifications_new_message_ringtone", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString());
+	}
+	 
+	public static String getServerUrl() {
+	    return prefs.getString("server_url_pref", com.example.projetsmb215.Constants.SERVER_URL);
+	}
+	 
+	public static String getSenderId() {
+	    return prefs.getString("sender_id_pref", com.example.projetsmb215.Constants.SENDER_ID);
 	}   
 }
