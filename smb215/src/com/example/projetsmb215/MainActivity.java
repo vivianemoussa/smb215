@@ -1,5 +1,5 @@
 package com.example.projetsmb215;
-import com.example.projetsmb215.R;
+/*import com.example.projetsmb215.R;
 import java.io.IOException;
 
 
@@ -35,7 +35,7 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
-	/*TextView mDisplay;
+	TextView mDisplay;
     AsyncTask<Void, Void, Void> mRegisterTask;
 
     @Override
@@ -222,7 +222,7 @@ public abstract class MainActivity extends ListActivity implements LoaderManager
         }
     };
 
-*/
+
                     
-}
+}*/
                 

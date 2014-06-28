@@ -18,9 +18,8 @@ import android.widget.Toast;
 import  com.example.projetsmb215.DemoActivity;
 
 
-@SuppressLint("NewApi")
+/*@SuppressLint("NewApi")
 public class ChatActivity extends Activity implements MessagesFragment.OnFragmentInteractionListener {
-	 
     private EditText msgEdit;
     private Button sendBtn;
     private String profileId, profileName, profileEmail;
@@ -104,5 +103,5 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
        // gcmUtil.cleanup();
         super.onDestroy();
     }
-}
+}*/
                 

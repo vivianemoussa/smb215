@@ -1,6 +1,6 @@
 package com.example.projetsmb215;
 
-
+/*
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -13,7 +13,7 @@ import android.net.Uri;
 
 public class DataProvider extends ContentProvider {
 	 
-    public static final String COL_ID = "_id";
+  public static final String COL_ID = "_id";
      
     public static final String TABLE_MESSAGES = "messages";
     public static final String COL_MSG = "msg";
@@ -170,4 +170,4 @@ public class DataProvider extends ContentProvider {
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+}*/

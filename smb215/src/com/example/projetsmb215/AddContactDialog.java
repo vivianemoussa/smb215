@@ -1,5 +1,5 @@
 package com.example.projetsmb215;
-
+/*
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -64,4 +64,4 @@ public class AddContactDialog extends DialogFragment {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }   
  
-}
+}*/

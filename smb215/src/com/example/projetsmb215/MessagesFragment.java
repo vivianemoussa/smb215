@@ -1,5 +1,5 @@
 package com.example.projetsmb215;
-import com.example.projetsmb215.R;
+/*import com.example.projetsmb215.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -94,7 +94,7 @@ public class MessagesFragment extends ListFragment implements LoaderManager.Load
     	public void onLoaderReset(Loader<Cursor> loader) {
             adapter.swapCursor(null);
         }
-    }
+    }*/
                
     
 
