@@ -1,5 +1,5 @@
 package com.example.projetsmb215;
-
+/*
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,4 +22,4 @@ public  class DbHelper extends SQLiteOpenHelper {
  
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
-}
+}*/

@@ -414,8 +414,8 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020020;
     }
     public static final class id {
-        public static final int action_add=0x7f07001d;
-        public static final int action_settings=0x7f07001e;
+        public static final int action_add=0x7f07001b;
+        public static final int action_settings=0x7f07001c;
         public static final int avatar=0x7f070017;
         public static final int book_now=0x7f070010;
         public static final int buyButton=0x7f07000a;
@@ -433,8 +433,8 @@ containing a value of this type.
         public static final int msg_list=0x7f070014;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
-        public static final int options_clear=0x7f07001b;
-        public static final int options_exit=0x7f07001c;
+        public static final int options_clear=0x7f07001d;
+        public static final int options_exit=0x7f07001e;
         public static final int production=0x7f070007;
         public static final int sandbox=0x7f070008;
         public static final int satellite=0x7f070002;
@@ -456,7 +456,8 @@ containing a value of this type.
         public static final int main_list_item=0x7f030003;
     }
     public static final class menu {
-        public static final int options_menu=0x7f0c0000;
+        public static final int main=0x7f0c0000;
+        public static final int options_menu=0x7f0c0001;
     }
     public static final class string {
         public static final int action_add=0x7f050023;

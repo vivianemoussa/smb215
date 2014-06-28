@@ -1,6 +1,6 @@
 package com.example.projetsmb215;
 
-public interface Constants {
+//public interface Constants {
 	 
     /**
      * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo)
@@ -16,4 +16,4 @@ public interface Constants {
             "com.example.projetsmb215.DISPLAY_MESSAGE";
  
     static final String EXTRA_MESSAGE = "message";*/
-}
+//}

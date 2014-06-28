@@ -96,8 +96,8 @@ int drawable ic_plusone_standard_off_client 0x7f02001d
 int drawable ic_plusone_tall_off_client 0x7f02001e
 int drawable powered_by_google_dark 0x7f02001f
 int drawable powered_by_google_light 0x7f020020
-int id action_add 0x7f07001d
-int id action_settings 0x7f07001e
+int id action_add 0x7f07001b
+int id action_settings 0x7f07001c
 int id avatar 0x7f070017
 int id book_now 0x7f070010
 int id buyButton 0x7f07000a
@@ -115,8 +115,8 @@ int id msg_edit 0x7f070016
 int id msg_list 0x7f070014
 int id none 0x7f070000
 int id normal 0x7f070001
-int id options_clear 0x7f07001b
-int id options_exit 0x7f07001c
+int id options_clear 0x7f07001d
+int id options_exit 0x7f07001e
 int id production 0x7f070007
 int id sandbox 0x7f070008
 int id satellite 0x7f070002
@@ -132,7 +132,8 @@ int layout activity_chat 0x7f030000
 int layout chat_list_item 0x7f030001
 int layout main 0x7f030002
 int layout main_list_item 0x7f030003
-int menu options_menu 0x7f0c0000
+int menu main 0x7f0c0000
+int menu options_menu 0x7f0c0001
 int string action_add 0x7f050023
 int string action_settings 0x7f050021
 int string already_registered 0x7f05002b
