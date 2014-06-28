@@ -5,7 +5,7 @@ import android.content.Intent;
 
 public final class CommonUtilities {
 
-    static final String SERVER_URL = "http://localhost:8080/GcmServer/";
+    static final String SERVER_URL = "http://localhost:8080/GCMserver/";
 
     static final String SENDER_ID = "1086298744334";
 
